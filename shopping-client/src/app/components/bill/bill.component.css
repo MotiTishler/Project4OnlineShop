@@ -1,0 +1,22 @@
+.highlight{
+    background-color: yellow;
+}
+
+th{
+    text-align:center;
+    padding:  15px;
+}
+
+tr{
+    text-align:center;
+}
+
+td{
+    padding:  15px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>purchase was completed successfully. See you soon.</h1>
+
+<mat-dialog-content>
+    <span *ngIf="hasReceipt">
+        Click here to get your receipt
+        <button mat-icon-button (click)="download()"><mat-icon>get_app</mat-icon></button>
+    </span> 
+
+    <span *ngIf="!hasReceipt">
+        Oooops. Unfortunately we couldn't download your receipt. Please, call customer service.
+    </span>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close> Exit </button>
+</div>

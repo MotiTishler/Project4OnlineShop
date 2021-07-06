@@ -1,0 +1,35 @@
+
+<form [formGroup]="myForm" (ngSubmit)="handleSubmit()" *ngIf="!_u.user">
+    <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput type="email" placeholder="Enter your email" formControlName="username">
+        <mat-icon matSuffix>account_circle</mat-icon>
+        <mat-hint>Enter your email as username</mat-hint>
+        <mat-error *ngIf="myForm.controls.username.errors?.required">Username is required</mat-error>
+        <mat-error *ngIf="myForm.controls.username.errors?.NotAValidEmailAddress">Username must be a valid email address</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="password" formControlName="password">
+        <mat-icon matSuffix>vpn_key</mat-icon>
+        <mat-hint>Enter password</mat-hint>
+        <mat-error *ngIf="myForm.controls.password.errors?.required" > password must be provided </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button 
+            color="primary" 
+            type="submit"
+            [disabled]="myForm.invalid"
+    >Login</button>
+
+    <p>Don't have an account yet? <a routerLink='./register'>Register here</a> </p>
+</form>
+
+<button mat-raised-button 
+    color="primary"
+    (click)="this._r.navigateByUrl('/main')"
+    *ngIf="_u.user"
+>
+    {{ enterText }}
+</button>

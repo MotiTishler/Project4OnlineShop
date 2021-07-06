@@ -1,0 +1,66 @@
+<div class="addit">
+            
+    <button mat-icon-button 
+            (click)="newItem()"
+            matTooltip='Add new item'
+            matTooltipPosition='after'
+    >
+        <mat-icon>add_circle_outline</mat-icon>
+    </button>
+
+    <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+
+        <mat-label>Product ID{{isNew? '':':'+product.id}} </mat-label>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Product name</mat-label>
+            <input matInput placeholder="product name" formControlName="productName">
+            <mat-hint>Product name</mat-hint>
+            <mat-error *ngIf="myForm.controls.productName.invalid">No product ? Product name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Supplier</mat-label>
+            <input matInput placeholder="Supplier" formControlName="supplier">
+            <mat-hint>Supplier</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="catID"  >
+            <mat-option *ngFor="let cat of cats" [value]="cat.id">
+                {{cat.cat_name}}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+<div class="price">
+        <mat-form-field>
+            <mat-label> Product price: </mat-label>
+            <input matInput type="number" min="0" formControlName="price">&#8362;
+            <mat-error *ngIf="myForm.controls.price.invalid">No price? really?</mat-error>
+        </mat-form-field> 
+/
+        <mat-form-field appearance="outline">
+            <mat-select formControlName="unit">
+            <mat-option *ngFor="let u of units" [value]="u">
+                {{u}}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+        <mat-form-field appearance="outline">
+            <mat-label>Image path: </mat-label>
+            <input matInput placeholder="image path" formControlName="image_path">
+            
+        </mat-form-field>
+
+        <button mat-button type="submit" [disabled]="myForm.invalid">
+            Save
+        </button>
+    </form>
+
+    <div class="image">
+        <img src={{myForm.controls.image_path.value}} alt="No image was found">
+    </div>
+
+</div>

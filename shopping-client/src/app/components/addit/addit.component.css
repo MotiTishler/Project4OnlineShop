@@ -1,0 +1,33 @@
+.addit{
+    
+    width: 100%;
+    
+}
+
+.image{
+    max-width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+
+img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+mat-form-field, p, button{
+    margin: 7px 0;
+}
+
+.price{
+    margin: 0 auto;
+
+}
+.price>mat-form-field{
+    max-width: 47%;
+}

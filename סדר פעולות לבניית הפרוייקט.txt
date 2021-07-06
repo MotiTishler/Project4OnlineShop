@@ -1,0 +1,65 @@
+1. create new project:
+ ng new my-instagram --skipTests
+
+2. generate components and services
+ng g c components/navbar --skipTests
+ng g c components/feed --skipTests
+ng g c components/add-form --skipTests
+ng g s  services/posts  --skipTest
+ng g s  services/profile  --skipTest
+
+3. define routes at app-routeing.module.ts file
+const routes: Routes = [
+  { path:'feed', component:FeedComponent },
+  { path:'add', component:AddFormComponent },
+  { path:'', pathMatch:'full', redirectTo:'feed' },
+  { path:'**', redirectTo:'feed' }
+];
+
+4. show basic components (that doesn't depend on router)
+ng s -o
+
+5. build html + css for those components
+
+6. add @material package
+ng add @angular/material
+- choose theme (I prefer Indigo/Pink)
+- typography: yes
+- browser animation: yes
+(במקרה של הודעת שגיאה - להפיל ולהרים מחדש)
+
+7. build interfaces and models
+
+8. build services 
+
+9. build Navbar component (html + css + ts) - to check router
+
+10. build Feed component
+
+11. build form component
+
+====================================
+Definitions:
+
+- components:
+navbar
+feed
+add-post
+(use material to implement the single-post component)
+profile?
+
+- services:
+-- posts --->
+    properties: posts:Post[]
+    functions: addPost(post), deletePost(postID)
+ 
+ --profile
+    properties: user:User
+
+- interfaces:
+-- User --> name, @username, imgUrl
+
+- models:
+-- Post --->
+    properties: id, imgUrl, like:boolean, description:string
+    functions: toggleLike()   

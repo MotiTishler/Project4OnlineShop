@@ -1,0 +1,13 @@
+<mat-card class="card"        
+        (dblclick)="_u.user.is_admin? editProduct():addProductToCart()" 
+>
+        <img mat-cart-image src={{product.image}} alt="image of {{product.name}}" >
+        <mat-card-title>{{ product.name }}<span *ngIf="product.supplier">- {{product.supplier}}</span></mat-card-title>
+        <mat-card-content>
+                <h3>{{product.price}}&#8362;/{{product.unit}}</h3>
+        </mat-card-content>
+        <mat-card-actions>
+        <button mat-button (click)="_u.user.is_admin? editProduct():addProductToCart()" 
+        >{{_u.user.is_admin? "Edit":"Add To Cart"}}</button>
+        </mat-card-actions>
+</mat-card>

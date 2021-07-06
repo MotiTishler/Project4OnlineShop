@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>How much do you want to order?</h2>
+
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label> Insert a positive number, please </mat-label>
+        <input matInput type="number" min="0" [(ngModel)]='am'>
+    </mat-form-field>
+</mat-dialog-content>
+    
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close >Cancel</button>
+    <button mat-button mat-dialog-close [mat-dialog-close]='am'>Ok</button>
+</div>

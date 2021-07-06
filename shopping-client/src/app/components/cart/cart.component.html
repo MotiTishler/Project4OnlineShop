@@ -1,0 +1,57 @@
+<div>
+    <button mat-icon-button (click)="clearCart()" matTooltip='Clear Cart'>
+        <mat-icon>remove_shopping_cart</mat-icon>
+        
+    </button>
+    <table mat-table [dataSource]="_cart.items">
+        <ng-container matColumnDef="imageUrl">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element"> <img [src]="element.image" /> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef> Product </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}}<span *ngIf="element.supplier"> - {{element.supplier}}</span> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef> amount </th>
+            <td mat-cell *matCellDef="let element"> 
+                <button mat-button (click)="addOne(element.product_id)"> + </button>
+                {{element.amount}} 
+                <button mat-button 
+                        [disabled]="element.amount < 1"
+                        (click)="(element.amount >= 1)? removeOne(element.product_id):doNothing()"
+                > - </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cost">
+            <th mat-header-cell *matHeaderCellDef> Cost </th>
+            <td mat-cell *matCellDef="let element"> {{element.cost}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element" > 
+                <button mat-icon-button 
+                        (click)="deleteItem(element.product_id)"
+                        matTooltip="Remove item from cart"
+                >
+                    <mat-icon>delete</mat-icon>
+                </button>  
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <h3>total cost: {{_cart.total}}&#8362;</h3>
+    <button mat-icon-button 
+            (click)="toSummary()"
+            [disabled]='_cart.items.length==0'
+    >
+        Pay
+        <mat-icon>arrow_forward</mat-icon>
+    </button>
+</div>

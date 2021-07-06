@@ -1,0 +1,89 @@
+<mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="stage1form" >
+        
+        <form [formGroup]="stage1form">
+            <ng-template matStepLabel>Choose username and password</ng-template>
+            <mat-form-field appearance="outline">
+                <mat-label>ID</mat-label>
+                <input matInput placeholder="insert israeli id" formControlName="id">
+                <mat-hint>Enter your israeli id</mat-hint>
+                <mat-error *ngIf="stage1form.controls.id.errors?.required">ID is required</mat-error>
+                <mat-error *ngIf="stage1form.controls.id.errors?.minLength">ID is too short. Use leading zeros if needed.</mat-error>
+                <mat-error *ngIf="stage1form.controls.id.errors?.maxLength">ID is too long</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput type="email" placeholder="some username" formControlName="username">
+                <mat-icon matSuffix>account_circle    </mat-icon>
+                <mat-hint>Enter your username</mat-hint>
+                <mat-error *ngIf="stage1form.controls.username.errors?.required">Username is required</mat-error>
+                <mat-error *ngIf="stage1form.controls.username.errors?.NotAValidEmailAddress">Username must be a valid email address</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="some password" formControlName="password">
+                <mat-icon matSuffix>vpn_key</mat-icon>
+                <mat-hint>Enter password</mat-hint>
+                <mat-error *ngIf="stage1form.controls.password.errors?.required" > password must be provided </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput type="password" placeholder="confirm password" formControlName="confirm">
+                <mat-icon matSuffix>vpn_key</mat-icon>
+                <mat-hint>Enter password</mat-hint>
+                <mat-error *ngIf="stage1form.controls.confirm.errors?.required" > you must confirm your password </mat-error>
+                <mat-error *ngIf="stage1form.controls.confirm.errors?.doesntMatch" > your password was not confirmed </mat-error>
+            </mat-form-field>
+            <div>
+                <button mat-button (click)="this._r.navigateByUrl('/')">Back to Login</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+
+        </form>
+
+    </mat-step>
+    <mat-step [stepControl]="stage2form">
+
+        <form [formGroup]="stage2form" >
+            <ng-template matStepLabel>Deliveries data</ng-template>
+            <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="first name" formControlName="fname">
+                <mat-hint>Enter your first name</mat-hint>
+                <mat-error *ngIf="stage2form.controls.fname.invalid">First name is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="last name" formControlName="lname">
+                <mat-hint>Enter your last name</mat-hint>
+                <mat-error *ngIf="stage2form.controls.fname.invalid">Last name is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <mat-select formControlName="city">
+                  <mat-option *ngFor="let city of cities" [value]="city">
+                    {{city}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="stage2form.controls.city.invalid">City is required.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="address" formControlName="address">
+                <mat-hint>Enter your address</mat-hint>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button 
+                    (click)="handleSubmit()"
+                    [disabled]="stage2form.invalid">
+                    Register
+                </button>
+            </div>
+        </form>
+        
+    </mat-step>
+
+</mat-horizontal-stepper>
+
+

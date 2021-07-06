@@ -1,0 +1,22 @@
+div{
+    
+    width: 100%;
+    
+}
+
+img{
+    height: 30px;
+    width: 30px;
+}
+
+th{
+    text-align:center;
+}
+
+tr{
+    text-align:center;
+}
+
+td{
+    padding:  5px;
+}

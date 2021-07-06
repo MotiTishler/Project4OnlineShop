@@ -1,0 +1,37 @@
+<div class="main">
+
+    <div class="cart"
+        [ngStyle]="{ 'width.em': sidenavWidth }"
+        (mouseenter)="sidenavWidth=20"
+        (mouseleave)="sidenavWidth= pinSideNav? 20 : 2"
+    >
+        <button mat-button 
+        (click)="pinSideNav = !pinSideNav"
+        matTooltip="{{pinSideNav? 'unpin':'pin'}}"
+        matTooltipPosition='after'
+        >
+            <mat-icon svgIcon="{{pinSideNav? 'pinned':'unpinned'}}"></mat-icon> 
+        </button>
+        
+        <app-cart *ngIf="!_u.user.is_admin"></app-cart>
+        <app-addit *ngIf="_u.user.is_admin"></app-addit>
+    </div>
+    
+        
+    <div class="cards">
+        <app-product *ngFor='let p of products' [product]=p></app-product>
+    </div>
+
+        
+
+    <div class="sidenav">
+        
+            <div class="nav-item" 
+            *ngFor="let cat of cats"
+            (click)='curCategory = cat.id; showProducts();'
+            >{{cat.cat_name}}</div>
+        
+    </div>
+
+
+</div>

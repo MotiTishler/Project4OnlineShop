@@ -1,0 +1,48 @@
+
+/* css for page */
+  .main{
+    width: 100%;
+    height: 100%;
+    display:inline-flex;    
+  }
+
+  /* css for cards area */
+  .cards{
+    height: 100%;
+    width: calc(90% - 20px);
+    
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow: auto;
+  }
+
+  /* css for navbar */
+  .sidenav {
+    
+    height: 100%;
+    width: 12%;
+    margin-left: auto;
+    order: 2;
+   
+  }
+
+  .nav-item{
+    text-align: center;
+    
+    cursor: pointer;
+    font-size: 15px;
+    margin-bottom: 5px;
+    
+  }
+
+  .nav-item:hover{
+    background-color: lightblue;
+    color: brown;
+  }
+
+  /* css for cart */
+  .cart{
+    height: 100%;
+    width: 20px;
+  }
