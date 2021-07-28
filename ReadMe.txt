@@ -1,3 +1,73 @@
+The project is a SPA that simulates an online health store. It combines management of customers, product, carts and deliveries.
+
+Login page:
+-----------
+The page has 3 divs: Login form on the left, an about section in the center, and a messages section on the right.
+The username must be a valid email address. At the time of registration a residential address must be provided which will be the default for deliveries.
+After logging in, an "Enter" button will appear on the page and a personal message according to the user:
+For a new customer - Welcome
+For a customer starting a new purchase - Your last purchase was at ...
+For a customer who who has an open shopping cart - Continue your purchase
+No message for an administrator.
+
+
+User management and permissions:
+--------------------------------
+1. Customer:
+A list of categories will appear on the right side of the main page, product cards - in the center, and on the left side - the shopping cart.
+
+The cart will shrink on the left side and will expand as the mouse hovers over it.
+Double-clicking on a product card will add it to the cart.
+At the top of the page will be a search box.
+The products will be displayed by the selected category or by the search box (search for "tea" for example).
+At the end of the purchase, an invoice will be displayed: the list of products and prices. After that, a delivery order form will be opened.
+Requirements for the form:
+- Double-clicking on the shipping address field will fill in the address given at the time of registration.
+- Up to 5 deliveries per day should be allowed
+- As a replacement for a credit information form - we will settle for the last 4 digits of a credit card. Clicking on 'Pay' will simulate a payment approved by the credit company (without having to exercise the referral to the company).
+- After the payment, a suitable message will appear and an option to download the receipt will be given.
+
+To login as a customer: username:user@4.proj, password:1234.
+
+2. Administrator:
+The main page is similar to the main page above: category list, product cards and search box. An add/edit form will appear instead of the shopping cart.
+Double-clicking on a product will fill out the form with the product details.
+
+To login as an administrator: username:admin@4.proj, password:1234.
+
+
+The stack:
+----------
+DB: MySql
+Server: nodeJS
+Client: Angular
+
+Main challenges:
+----------------
+- DB:
+Proper design of tables. Relationships between tables.
+
+- Server:
+Proper design of routes
+Using middlewares
+Authentication (jwt)
+Permission management (admin only / users only)
+Encryption and decryption of passwords (bcrypt)
+Creating pdf files (pdfkit)
+
+- Client:
+Proper components design (Angular).
+Angular Material design
+services
+Using guards for user management (user / admin).
+Validations: built-in and user-defined
+Downloading pdf files from the server (file-saver)
+
+
+
+================================
+Hebrew:
+================================
 הפרוייקט מכיל SPA המדמה חנות אונליין. יש לנהל לקוחות, מוצרים (מחולקים לקטגוריות), עגלות קניה ומשלוחים.
 
 במסך הכניסה אפשר להתחבר או להרשם. שם המשתמש יהיה כתובת דוא"ל תקנית. בזמן הרשמה יש לספק גם כתובת מגורים שתהווה ברירת מחדל למשלוחים.
@@ -31,7 +101,7 @@
 ניהול הרשאות: admin only / users only במקומות הנדרשים.
 אותנטיקציה באמצעות jwt.
 הצפנה ופענוח של הסיסמה ושל ה-token באמצעות bcrypt.
-בונוס: יצירת קבצי PDF להורדה (באמצעות חבילת pdfkit).
+יצירת קבצי PDF להורדה (באמצעות חבילת pdfkit).
 
 
 צד לקוח:
@@ -40,9 +110,8 @@
 services 
 שימוש ב-guards לניהול משתמשים (user/admin).
 ואלידציות (מובנות ואישיות).
-
-בונוס: 
 הורדת קבצים מהשרת (באמצעות חבילת file-saver).
+
 
 
 
